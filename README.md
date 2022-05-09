@@ -7,3 +7,4 @@
 ## Projetos
 
 * [Projeto 1 - Aplicação de Multithreads](projeto1/)
+* [Projeto 2 - Animação Multithreads](projeto2/)
