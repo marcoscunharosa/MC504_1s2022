@@ -6,13 +6,13 @@
 int v_weights[65536];
 int i;
 
-for (i=0; i < 65535; i++){
+for (i=0; i < 65536; i++){
     v_weights[i] = 10;
 }
 
-SYSCALL_DEFINE1(getuserweight, int, uid) {
+SYSCALL_DEFINE4(getuserweight, int, uid) {
 	if(uid < -1 || uid > 65535){
-        errno = EINVAL;
+        	errno = EINVAL;
 		return  -1;
 	}
 
@@ -24,7 +24,7 @@ SYSCALL_DEFINE1(getuserweight, int, uid) {
 	return v_weights[uid];
 }
 
-SYSCALL_DEFINE2(setuserweight, int, uid, int, weight) {
+SYSCALL_DEFINE5(setuserweight, int, uid, int, weight) {
 	if(from_kuid_munged(current_user_ns(), current_uid()) != 0) {
         errno = EACCES;
 		return -1;
