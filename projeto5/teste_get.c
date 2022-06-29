@@ -4,8 +4,7 @@
 #include <sys/syscall.h>
 #include <sys/types.h>
 
-#define SET_USER_WEIGHT 440
-#define GET_USER_WEIGHT 441
+#define __NR_getuserweight 429
 
 int main(int argc, char *argv[]) {
 	if (argc != 2) {
@@ -13,12 +12,12 @@ int main(int argc, char *argv[]) {
 		return -1;
 	}
 
-    int weight = syscall(GET_USER_WEIGHT, (int)argv[1]);
+    int weight = syscall(__NR_getuserweight, (int)argv[1]);
 
 	if(weight == -1) {
 		printf("Ocorreu um error de errno = %d\n", errno);
 		return -1;
 	}
     printf("O usuario %d possui um peso igual à: %d\n", (int)argv[1], weight);
-    return(0)
+    return(0);
 }
