@@ -4,16 +4,17 @@
 
 
 int v_weights[65536];
-int i;
 
-for (i=0; i < 65536; i++){
-    v_weights[i] = 10;
+int criar_vetor(int v_weights[65536]){
+	for (i=0; i < 65536; i++){
+		v_weights[i] = 10;
+	}
+	return 0;
 }
 
 SYSCALL_DEFINE4(getuserweight, int, uid) {
 	if(uid < -1 || uid > 65535){
-        	errno = EINVAL;
-		return  -1;
+		return  -EINVAL;
 	}
 
 	else if(uid == -1){
@@ -26,13 +27,11 @@ SYSCALL_DEFINE4(getuserweight, int, uid) {
 
 SYSCALL_DEFINE5(setuserweight, int, uid, int, weight) {
 	if(from_kuid_munged(current_user_ns(), current_uid()) != 0) {
-        errno = EACCES;
-		return -1;
+		return -EACCES;
 	}
 
 	else if(uid < -1 || uid > 65535 || weight <= 0) {  
-        errno = EINVAL;
-		return -1;
+		return -EINVAL;
 	}
 
 	else if(uid == -1){
@@ -40,6 +39,6 @@ SYSCALL_DEFINE5(setuserweight, int, uid, int, weight) {
 	}
 
 	v_weights[uid] = weight;
-    printk("O peso do usuário de id %d foi alterado para %d\n", uid, v_weights[uid]);
+    	printk("O peso do usuário de id %d foi alterado para %d\n", uid, v_weights[uid]);
 	return 0;
 }
