@@ -5,8 +5,8 @@
 #include <sys/types.h>
 #include <errno.h>
 
-#define SET_USER_WEIGHT 440
-#define GET_USER_WEIGHT 441
+#define GET_USER_WEIGHT 429
+#define SET_USER_WEIGHT 430
 
 int main(int argc, char *argv[]) {
 	if (argc != 3) {
