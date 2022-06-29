@@ -4,7 +4,7 @@
 
 int weights[65536] = {[0 ... 65535] = 10};
 
-SYSCALL_DEFINE4(getuserweight, int, uid) {
+SYSCALL_DEFINE1(getuserweight, int, uid) {
 	if(uid < -1 || uid > 65535){
 		return  -EINVAL;
 	}
@@ -17,7 +17,7 @@ SYSCALL_DEFINE4(getuserweight, int, uid) {
 	return v_weights[uid];
 }
 
-SYSCALL_DEFINE5(setuserweight, int, uid, int, weight) {
+SYSCALL_DEFINE2(setuserweight, int, uid, int, weight) {
 	if(from_kuid_munged(current_user_ns(), current_uid()) != 0) {
 		return -EACCES;
 	}
