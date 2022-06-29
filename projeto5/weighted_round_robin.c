@@ -2,16 +2,7 @@
 #include <linux/user_namespace.h>
 #include <errno.h>
 
-
-int v_weights[65536];
-
-int create_weights(){
-	int i;
-	for (i=0; i < 65536; i++){
-		v_weights[i] = 10;
-	}
-	return 0;
-}
+int weights[65536] = {[0 ... 65535] = 10};
 
 SYSCALL_DEFINE4(getuserweight, int, uid) {
 	if(uid < -1 || uid > 65535){
