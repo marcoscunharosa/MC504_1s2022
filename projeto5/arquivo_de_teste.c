@@ -14,8 +14,6 @@ int main(int argc, char *argv[]) {
 		return -1;
 	}
 	
-	create_weights();
-
 	int weight = syscall(GET_USER_WEIGHT, atoi(argv[1]));
 
 	if(weight == -1) {
