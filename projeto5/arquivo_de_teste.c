@@ -13,6 +13,8 @@ int main(int argc, char *argv[]) {
         printf("Parametros foram passados de maneira errada");
 		return -1;
 	}
+	
+	criar_vetor();
 
 	int weight = syscall(GET_USER_WEIGHT, atoi(argv[1]));
 
