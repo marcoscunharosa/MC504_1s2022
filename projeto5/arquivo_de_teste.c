@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 		return -1;
 	}
 	
-	criar_vetor();
+	create_weights();
 
 	int weight = syscall(GET_USER_WEIGHT, atoi(argv[1]));
 
