@@ -5,7 +5,7 @@
 
 int v_weights[65536];
 
-int criar_vetor(int v_weights[65536]){
+int criar_vetor(){
 	int i;
 	for (i=0; i < 65536; i++){
 		v_weights[i] = 10;
