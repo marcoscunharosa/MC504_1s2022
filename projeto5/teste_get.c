@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sys/syscall.h>
 #include <sys/types.h>
+#include <errno.h>
 
 #define __NR_getuserweight 429
 
