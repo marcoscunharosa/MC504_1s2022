@@ -8,12 +8,12 @@
 #define __NR_getuserweight 429
 
 int main(int argc, char *argv[]) {
-	int uid = atoi(argv[1]);
-	
 	if (argc != 2) {
         printf("Parametros foram passados de maneira errada.\n ./teste_get uid\n");
 		return -1;
 	}
+	
+	int uid = atoi(argv[1]);
 
     int weight = syscall(__NR_getuserweight, uid);
 
